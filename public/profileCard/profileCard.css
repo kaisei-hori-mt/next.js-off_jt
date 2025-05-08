@@ -1,0 +1,24 @@
+.pageHeader {
+  background-image: url("pageHeaderBackground.jpg");
+  background-size: cover;
+  height: 100px;
+}
+h1 {
+  padding: 30px;
+  text-align: center;
+}
+.pageBody {
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  background-color: #EEFFFF;
+}
+
+img {
+  padding: 20px;
+  width: 250px;
+  height: auto;
+}
+span {
+  background-color: #EEEEEE
+}
