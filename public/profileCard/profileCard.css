@@ -1,13 +1,15 @@
-.pageHeader {
+header {
   background-image: url("pageHeaderBackground.jpg");
   background-size: cover;
   height: 100px;
 }
+
 h1 {
   padding: 30px;
   text-align: center;
 }
-.pageBody {
+
+main {
   margin: 20px auto;
   display: flex;
   justify-content: center;
@@ -19,6 +21,7 @@ img {
   width: 250px;
   height: auto;
 }
+
 span {
   background-color: #EEEEEE
 }
