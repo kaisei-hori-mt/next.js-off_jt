@@ -9,11 +9,16 @@ document.addEventListener("DOMContentLoaded", () => {
 		.then((response) => response.json())
 		// データ取得後の処理
 		.then((data) => {
-			const newParagraph = document.createElement("pre");
-			newParagraph.textContent = JSON.stringify(data, null, 2);
+			const newList = document.createElement("ul");
+			const dataList = data.map((item) => item.name);
+			for (const name of dataList) {
+				const listItem = document.createElement("li");
+				listItem.textContent = name;
+				newList.appendChild(listItem);
+			}
 			// データ取得完了後、「読み込み中...」を非表示し、データ一覧を表示する
 			document.getElementById("loading").style.display = "none";
-			document.getElementById("container").appendChild(newParagraph);
+			document.getElementById("container").appendChild(newList);
 		})
 		.catch((error) => {
 			alert("エラーが発生しました");
