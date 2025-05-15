@@ -19,7 +19,9 @@ document.getElementById("form").addEventListener("submit", (event) => {
 	if (inputArray.name === "") {
 		alert("名前を入力してください");
 	}
-	if (inputArray.age < 18) {
+	if (Number.isNaN(inputArray.age)) {
+		alert("年齢は数字で入力してください");
+	} else if (inputArray.age < 18) {
 		alert("年齢が18歳未満です");
 	}
 
