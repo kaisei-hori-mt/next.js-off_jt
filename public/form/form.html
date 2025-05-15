@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>アンケートフォーム</title>
+  </head>
+  <body>
+    <form action="#" id="form">
+      <div>
+        <label for="inputName">名前</label>
+        <input type="text" placeholder="名前を入力" id="inputName" name="inputName"/>
+      </div>
+      
+      <div>
+        <label for="inputAge">年齢</label>
+        <input type="number" placeholder="年齢を入力" id="inputAge" name="inputAge"/>
+      </div>
+
+      <div>
+        <label for="inputJob">職業</label>
+        <select id="inputJob" name="inputJob">
+          <option>エンジニア</option>
+          <option>営業</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="inputIntroduce">自己紹介</label>
+        <textarea id="inputIntroduce" name="inputIntroduce"></textarea>
+      </div>
+
+      <div>
+        <button type="submit">送信</button>
+      </div>
+
+    </form>
+    <script src="form.js"></script>
+  </body>
+</html>
