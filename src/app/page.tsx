@@ -15,6 +15,7 @@ export default function Home() {
 				<p>今日は {today} です</p>
 				<LikeButton />
 				<Link href="/memos">メモ一覧ページへ</Link>
+				<Link href="/Form">フォームへ</Link>
 			</main>
 			<footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
 				<a
