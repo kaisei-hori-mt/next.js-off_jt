@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Link from "next/link";
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -32,10 +33,10 @@ export default function RootLayout({
 					<nav className="ml-3">
 						<ul>
 							<li>
-								<a href="/">ホーム</a>
+								<Link href="/">ホーム</Link>
 							</li>
 							<li>
-								<a href="/memos">ページ1</a>
+								<Link href="/memos">ページ1</Link>
 							</li>
 						</ul>
 					</nav>
