@@ -27,9 +27,9 @@ export default function RootLayout({
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} antialiased`}
 			>
-				<header style={{ padding: "1rem", background: "#555555" }}>
+				<header className="bg-cyan-500">
 					<p>AppName</p>
-					<nav>
+					<nav className="ml-3">
 						<ul>
 							<li>
 								<a href="/">ホーム</a>
@@ -43,7 +43,7 @@ export default function RootLayout({
 
 				<main>{children}</main>
 
-				<footer style={{ padding: "1rem", background: "#555555" }}>
+				<footer className="bg-cyan-500">
 					<p>© 2025 My Memo App</p>
 				</footer>
 			</body>
