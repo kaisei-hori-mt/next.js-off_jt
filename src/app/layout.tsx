@@ -23,11 +23,29 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en">
+		<html lang="ja">
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} antialiased`}
 			>
-				{children}
+				<header style={{ padding: "1rem", background: "#555555" }}>
+					<p>AppName</p>
+					<nav>
+						<ul>
+							<li>
+								<a href="/">ホーム</a>
+							</li>
+							<li>
+								<a href="/memos">ページ1</a>
+							</li>
+						</ul>
+					</nav>
+				</header>
+
+				<main>{children}</main>
+
+				<footer style={{ padding: "1rem", background: "#555555" }}>
+					<p>© 2025 My Memo App</p>
+				</footer>
 			</body>
 		</html>
 	);
