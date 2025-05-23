@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Link from "next/link";
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -23,11 +24,29 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en">
+		<html lang="ja">
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} antialiased`}
 			>
-				{children}
+				<header className="bg-cyan-500">
+					<p>AppName</p>
+					<nav className="ml-3">
+						<ul>
+							<li>
+								<Link href="/">ホーム</Link>
+							</li>
+							<li>
+								<Link href="/memos">ページ1</Link>
+							</li>
+						</ul>
+					</nav>
+				</header>
+
+				<main>{children}</main>
+
+				<footer className="bg-cyan-500">
+					<p>© 2025 My Memo App</p>
+				</footer>
 			</body>
 		</html>
 	);
