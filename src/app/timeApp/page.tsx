@@ -1,19 +1,17 @@
 "use client";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-export default function timeAppHome() {
-  const [count, setTimer] = useState<Date>();
+export default function TimeAppPage() {
+  const [count, setCount] = useState<Date>();
   useEffect(() => {
-    setTimer(new Date());
+    setCount(new Date());
     const timer = setInterval(() => {
-      setTimer(new Date());
+      setCount(new Date());
     }, 1000);
-
     return () => clearInterval(timer);
   }, []);
 
-  return(
+  return (
     <main>
       <p>{count ? count.toLocaleString() : "Loading..."}</p>
     </main>
