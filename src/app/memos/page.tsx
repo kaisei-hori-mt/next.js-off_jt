@@ -7,7 +7,7 @@ type Memo = {
   title: string;
 };
 
-export default function Memo() {
+export default function MemosPage() {
   const fetcher = (url: string) => fetch(url).then((res) => res.json());
   const { data, error, isLoading } = useSWR("/api/memos", fetcher);
   if (isLoading) return <p>読み込み中...</p>;
