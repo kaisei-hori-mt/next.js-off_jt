@@ -1,26 +1,27 @@
+"use client";
 import Link from "next/link";
+import useSWR from "swr";
 
-export const metadata = {
-	title: "Memosページ",
+type Memo = {
+  id: number;
+  title: string;
 };
 
-// ダミーデータ
-const memoIDs: string[] = ["123", "456", "789"];
-
-export default function Memo() {
-	return (
-		<main>
-			<p>これはmemosページです</p>
-			<ul>
-				{memoIDs.map((id) => {
-					return (
-						<li key={id}>
-							<Link href={`/memos/${id}`}>メモID: {id}</Link>
-						</li>
-					);
-				})}
-			</ul>
-			<Link href="/">Homeに戻る</Link>
-		</main>
-	);
+export default function MemosPage() {
+  const fetcher = (url: string) => fetch(url).then((res) => res.json());
+  const { data, error, isLoading } = useSWR("/api/memos", fetcher);
+  if (isLoading) return <p>読み込み中...</p>;
+  if (error) return <p>エラーが発生しました</p>;
+  return (
+    <main>
+      <p>これはmemos一覧ページです</p>
+      <Link href="/memos/new">memo登録画面へ</Link>
+      <ul>
+        {data.map((memo: Memo) => (
+          <li key={memo.id}>{memo.title}</li>
+        ))}
+      </ul>
+      <Link href="/">Homeに戻る</Link>
+    </main>
+  );
 }
