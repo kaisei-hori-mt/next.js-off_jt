@@ -2,9 +2,9 @@
 import { useEffect, useState } from "react";
 
 export default function TimeAppPage() {
-  const [count, setCount] = useState<Date>();
+  const [count, setCount] = useState<Date>(new Date());
+
   useEffect(() => {
-    setCount(new Date());
     const timer = setInterval(() => {
       setCount(new Date());
     }, 1000);
@@ -13,7 +13,11 @@ export default function TimeAppPage() {
 
   return (
     <main>
-      <p>{count ? count.toLocaleString() : "Loading..."}</p>
+      <p>
+        {count
+          ? count.toLocaleString("ja-JP", { hour12: false })
+          : "Loading..."}
+      </p>
     </main>
   );
 }
