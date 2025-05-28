@@ -1,5 +1,4 @@
-import type { NextRequest } from "next/server";
-import { NextResponse } from "next/server";
+import { type NextRequest, NextResponse } from "next/server";
 
 // メモデータのモック保存先（ファイル外部ではなく、リクエスト間で共有しない擬似状態）
 const memos = [
