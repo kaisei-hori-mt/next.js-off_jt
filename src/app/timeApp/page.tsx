@@ -13,11 +13,7 @@ export default function TimeAppPage() {
 
   return (
     <main>
-      <p>
-        {count
-          ? count.toLocaleString("ja-JP", { hour12: false })
-          : "Loading..."}
-      </p>
+      <p>{count.toLocaleString("ja-JP", { hour12: false })}</p>
     </main>
   );
 }
