@@ -3,6 +3,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import React, { useState } from "react";
 import { type SubmitHandler, useForm } from "react-hook-form";
 import { mutate } from "swr";
+import useSWRMutation from "swr/mutation";
 import { z } from "zod";
 import { Modal } from "./Modal";
 
@@ -38,9 +39,29 @@ const fields: Array<{
   { name: "accept", label: "利用規約同意", type: "checkbox" },
 ];
 
+// sendRequestの定義
+async function sendRequest(
+  url: string,
+  { arg }: { arg: { data: FormValues } },
+) {
+  return fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(arg.data),
+  }).then((res) => {
+    if (!res.ok) {
+      throw new Error(`HTTPエラー: ${res.status}`);
+    }
+    res.json();
+  });
+}
+
 export default function PracticeForm() {
-  const [isLoading, setIsLoading] = useState(false);
+  const { trigger, isMutating } = useSWRMutation("/api/memos", sendRequest);
   const [showModal, setShowModal] = useState(false);
+
   // フォームの初期設定
   const {
     register,
@@ -61,23 +82,14 @@ export default function PracticeForm() {
 
   // POST送信
   const onSubmit: SubmitHandler<FormValues> = async (data: FormValues) => {
-    setIsLoading(true);
-    const res = await fetch("/api/memos", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-
-    if (res.ok) {
+    try {
+      const res = await trigger({ data });
       reset();
       mutate("/api/memos");
       setShowModal(true);
-    } else {
-      alert("登録エラー");
+    } catch (error) {
+      alert(error);
     }
-    setIsLoading(false);
   };
 
   return (
@@ -93,15 +105,14 @@ export default function PracticeForm() {
                 field.name === "age" ? { valueAsNumber: true } : {},
               )}
               type={field.type}
-              disabled={isLoading}
             />
             {errors[field.name] && (
               <p style={{ color: "red" }}>{errors[field.name]?.message}</p>
             )}
           </div>
         ))}
-        <button type="submit" disabled={isLoading}>
-          {isLoading ? "送信中..." : "送信"}
+        <button type="submit" disabled={isMutating}>
+          {isMutating ? "送信中..." : "送信"}
         </button>
       </form>
 
