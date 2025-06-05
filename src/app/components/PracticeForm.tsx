@@ -100,6 +100,7 @@ export default function PracticeForm() {
             <label htmlFor={field.name}>{field.label}</label>
             <input
               id={field.name}
+              autoComplete="on"
               {...register(
                 field.name,
                 field.name === "age" ? { valueAsNumber: true } : {},
