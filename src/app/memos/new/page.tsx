@@ -1,10 +1,9 @@
-import { NewForm } from "@/app/components/NewForm";
-import React from "react";
+import PracticeForm from "@/app/components/PracticeForm";
 
-export default function NewPage() {
+export default function PracticePage() {
   return (
     <main>
-      <NewForm />
+      <PracticeForm />
     </main>
   );
 }

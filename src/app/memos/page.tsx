@@ -14,7 +14,8 @@ export default function MemosPage() {
   if (error) return <p>エラーが発生しました</p>;
   return (
     <main>
-      <p>これはmemosページです</p>
+      <p>これはmemos一覧ページです</p>
+      <Link href="/memos/new">memo登録画面へ</Link>
       <ul>
         {data.map((memo: Memo) => (
           <li key={memo.id}>{memo.title}</li>
